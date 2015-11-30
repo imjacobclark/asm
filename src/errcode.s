@@ -1,6 +1,7 @@
-.global main
-.func main
+.text
 
-main:
-	mov r0,#2
-	bx lr
+.globl _start
+_start:
+    mov     r0, $204
+    mov     r7, $1
+    swi     $0    
