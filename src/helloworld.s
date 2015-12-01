@@ -3,7 +3,7 @@ msg:
     .ascii      "Hello World\n"
 
 .text
-.globl _start
+.global _start
 _start:
     mov     r0, $1 	/* Move 1 into r0 register for syscall (file descriptor stdout) */
     ldr     r1, =msg 	/* Load the 32bit msg constant into the r1 register */
