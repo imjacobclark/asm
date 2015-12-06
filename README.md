@@ -5,13 +5,19 @@ Assembler examples for ARM11 architecture (Raspberry Pi Zero).
 
 Nothing within this repository is useful for anying other than research/education purposes.
 
-**How to compile examples:**
+**How to compile, inspect and run examples:**
 
 ```shell
 $ as -o errcode.o errcode.s # Build object file from assembler
 $ ld -o errcode errcode.o # Link object file to executable binary
-$ ./errcode
+$ strace ./errcode
+
+execve("./errcode", ["./errcode"], [/* 17 vars */]) = 0
+exit(204)                               = ?
++++ exited with 204 +++
 ```
+
+
 
 **How to inspect built binaries:**
 
