@@ -18,5 +18,5 @@ _start:
 
 num1: 
 	.word dnum1
-num2 : 
+num2: 
 	.word dnum2
