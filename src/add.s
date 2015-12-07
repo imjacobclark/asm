@@ -1,9 +1,6 @@
 .data
-
-.balign 4
 dnum1:
 	.word	5
-.balign 4
 dnum2:
 	.word 	10
 
@@ -19,5 +16,7 @@ _start:
     mov 	r7, $1
     swi 	$0
 
-num1 : .word dnum1
-num2 : .word dnum2
+num1: 
+	.word dnum1
+num2 : 
+	.word dnum2
