@@ -15,4 +15,4 @@ _start:
 
     mov 	r7, $1		/* Load 1 into r7 register for exit syscall */
     swi 	$0		/* Software intterupt */
-    /* Exits with answer to addition */
+    				/* Exits with status code as answer to addition */
