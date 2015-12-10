@@ -1,3 +1,4 @@
+.data
 num1:
         .word   8
 num2:
@@ -37,8 +38,8 @@ _start:
     mov         r2, $1
     mov         r7, $4
     swi         $0
-
-    # At this stage, everything wen't okay, exit with 0 exit status
-    mov         r0, #0
+    
+    # At this stage, everything wen't okay, exit with 0 exit status    
+    mov         r0, $1
     mov         r7, $1
     swi         $0
