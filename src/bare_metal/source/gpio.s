@@ -1,12 +1,12 @@
 /*
-	Description: 	Returns the GPIO address
-	Params: 		None
-	Returns:		r0 -> address of register
+	Description:       Returns the GPIO address
+	Params:            None
+	Returns:           r0 -> address of register
 */
 .global GetGpioAddress
 GetGpioAddress:
-    ldr r0,=0x20200000		/* Load our GPIO address into register 0 */
-    mov pc,lr				/* Move the program counter back to the Last Link register (return to calling function) */
+    ldr r0,=0x20200000      /* Load our GPIO address into register 0 */
+    mov pc,lr               /* Move the program counter back to the Last Link register (return to calling function) */
 
 /*
     Description:    Sets the function of the GPIO
@@ -17,9 +17,9 @@ GetGpioAddress:
 */
 .global SetGpioFunction
 SetGpioFunction:
-    cmp r0,#53 				/* Compare register 0 to 53 */
-    cmpls r1,#7				/* If register 0 was less than or equal to 53, compare register 1 to 7 */
-    movhi pc,lr				/* If register 0 was higher than 53 or register 1 was higher than 7 return to calling function */
+    cmp r0,#53              /* Compare register 0 to 53 */
+    cmpls r1,#7             /* If register 0 was less than or equal to 53, compare register 1 to 7 */
+    movhi pc,lr             /* If register 0 was higher than 53 or register 1 was higher than 7 return to calling function */
 
     push {lr}               /* Push the Last Link register address onto the stack */
     mov r2,r0               /* Move register 0 into register 2, as GetGpioAddress returns into register 0 */
@@ -31,10 +31,10 @@ SetGpioFunction:
         16 % 10 * 3 = 18 (bit to enable)
     */
     functionLoop$:
-    	cmp r2,#9			/* Compare register 2 to 9 */
-    	subhi r2,#10		/* If register 2 higher than 9, subtract 10 from register 2 (pin required) */
-    	addhi r0,#4			/* If register 2 higher than 9, add 10 to register 0 (GPIO address) */
-    	bhi functionLoop$	/* Branch if register 2 is higher than 9 (loop) */
+    	cmp r2,#9              /* Compare register 2 to 9 */
+    	subhi r2,#10           /* If register 2 higher than 9, subtract 10 from register 2 (pin required) */
+    	addhi r0,#4            /* If register 2 higher than 9, add 10 to register 0 (GPIO address) */
+    	bhi functionLoop$      /* Branch if register 2 is higher than 9 (loop) */
 
     /*
         Shift the binary representation of r2 left by 1, add r2 to this value. (r2 * 3)
