@@ -6,7 +6,7 @@ _start:
 
 .section .text
 main:
-/* Point the stack at our default load address (0x8000)*/
+    /* Point the stack at our default load address (0x8000)*/
     mov sp,#0x8000
 
     /* Select pin 16 and it's GPIO function */
