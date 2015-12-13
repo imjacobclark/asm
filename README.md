@@ -1,9 +1,9 @@
 # asm
-Assembler on the Raspberry Pi Zero.
+Linux assembler on the Raspberry Pi.
 
-Assembler examples for ARM11 architecture (Raspberry Pi Zero). 
+Assembler examples for ARM11 architecture (Raspberry Pi).
 
-Nothing within this repository is useful for anying other than research/education purposes.
+Nothing within this repository is useful for anything other than research/education purposes.
 
 **How to compile, inspect and run examples:**
 
@@ -17,12 +17,10 @@ exit(204)                               = ?
 +++ exited with 204 +++
 ```
 
-
-
 **How to inspect built binaries:**
 
 ```shell
-$ objdump -d errcode 
+$ objdump -d errcode
 
 errcode:     file format elf32-littlearm
 
@@ -34,4 +32,3 @@ Disassembly of section .text:
    10058:	e3a07001 	mov	r7, #1
    1005c:	ef000000 	svc	0x00000000
 ```
-

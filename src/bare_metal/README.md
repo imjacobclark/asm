@@ -3,6 +3,8 @@ Bare metal assembler on the Raspberry Pi
 
 These examples are designed to be run without a pre-exsisting Linux kernel/OS. They directly access/store memory and are unsafe to be run in a typical OS environment. You will require a machine with the ARM toolchain to compile these examples.
 
+These examples are well commented to explain what is happening throughout. 
+
 Nothing within this repository is useful for anything other than research/education purposes.
 
 Based on [Baking Pi – Operating Systems Development](https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/)

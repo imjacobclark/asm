@@ -1,36 +1,40 @@
 .section .init
-.globl _start
+.global _start
 _start:
-    ldr r0,=0x20200000      /* GPIO virtual addr */
+    /* Branch into our main function, making room for our stack */
+    b main
 
-    /*
-        54 GPIOs per 6 registers. 32 bits each with 7 modes per pin with 3 bits per GPIO
-        GPFSELn 0-5 (0-9 | 10-19 | 20-29 | 30-39 | 40-49 | 50-54)
-        16 % 10 * 3 = 18
-    */
+.section .text
+main:
+    /* Point the stack at our default load address (0x8000)*/
+    mov sp,#0x8000
 
+    /* Select pin 16 and it's GPIO function */
+    mov r0,#16
     mov r1,#1
-    lsl r1,#18
-    str r1,[r0,#4]          /* GPIO Function Select 1 (16 % 10 * 3) (GPFSEL1) */
-
-    mov r1,#1
-    lsl r1,#16
+    bl SetGpioFunction
 
 loop$:
-    str r1,[r0,#40]         /* GPIO Pin Output Clear 0 (GPCLR0) (clears pin 16 [sets to low] (ACTOK)) */
+    /* Select pin 16 and set it to 0 */
+    mov r0,#16
+    mov r1,#0
+    bl SetGpio
 
-    mov r2,#0x3F0000        /* BLINK ME! (busies the processor with some maths) */
+    mov r0,#0x3F0000
     wait1$:
-    	sub r2,#1
-    	cmp r2,#0
+    	sub r0,#1
+    	teq r0,#0
     	bne wait1$
 
-    str r1,[r0,#28]         /* GPIO Pin Output Set 0 (GPSET0) (sets pin 16 [to high]) */
+    /* Select pin 16 and set it to 1 */
+    mov r0,#16
+    mov r1,#1
+    bl SetGpio
 
-    mov r2,#0x3F0000
+        mov r0,#0x3F0000
     wait2$:
-    	sub r2,#1
-    	cmp r2,#0
-    	bne wait2$
+        sub r0,#1
+        teq r0,#0
+        bne wait2$
 
 b loop$
