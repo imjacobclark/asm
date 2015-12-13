@@ -68,9 +68,9 @@ SetGpio:
     lsl r3,#2              /* Shift the binary representation of register 2 2 places left, store in register 3 (Multiply) */
     add r0,r3              /* Add register 0 and register 3 together */
 
-    and r2,#31             /* Convert register 2 into a 31 bit binary representation */
-    mov r3,#1
-    lsl r3,r2
+    and r2,#31             /* Computes the boolean function of register 2 and 31 */
+    mov r3,#1              /* Moves 1 into register 3 */
+    lsl r3,r2              /* Shifts register 3 left by the value of r2 */
 
     teq r1,#0              /* Test if register 1 is equal to 0 */
     streq r3,[r0,#40]      /* If register 1 is equal to 0, store register 0+40 at register 3 */
