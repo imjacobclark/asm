@@ -16,9 +16,9 @@ $ make
 For reference, the manual commands are:
 
 ```shell
-arm-none-eabi-as -o main.o ./source/main.s
-arm-none-eabi-ld -o output.elf -T kernel.ld main.o
-arm-none-eabi-objcopy output.elf -O binary kernel.img
+$ arm-none-eabi-as -o main.o ./source/main.s
+$ arm-none-eabi-ld -o output.elf -T kernel.ld main.o
+$ arm-none-eabi-objcopy output.elf -O binary kernel.img
 ```
 
 **How to install/run examples:**
