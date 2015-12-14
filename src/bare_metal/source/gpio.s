@@ -1,7 +1,7 @@
 /*
-	Description:       Returns the GPIO address
-	Params:            None
-	Returns:           r0 -> address of register
+    Description:       Returns the GPIO address
+    Params:            None
+    Returns:           r0 -> address of register
 */
 .global GetGpioAddress
 GetGpioAddress:
